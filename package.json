@@ -1,0 +1,28 @@
+{
+  "name": "mcq-portal",
+  "version": "1.0.0",
+  "description": "A portal for conducting MCQ test on authenticated users.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kayoxity/MCQ-Portal.git"
+  },
+  "keywords": [
+    "mcq",
+    "portal",
+    "js",
+    "javascript",
+    "express",
+    "node",
+    "mongodb"
+  ],
+  "author": "Austin Kispotta",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kayoxity/MCQ-Portal/issues"
+  },
+  "homepage": "https://github.com/kayoxity/MCQ-Portal#readme"
+}
