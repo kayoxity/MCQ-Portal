@@ -1,0 +1,53 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/home.css">
+<body>
+
+<% include partials/navbar %>
+<% include partials/sidebar %>
+
+<h1>Add question #<%=qnumber%></h1>
+<!-- "/create/"+(parseInt(qnumber, 10)+1).toString() -->
+<form action="/create/num" method="POST">
+    <div class="form-group">
+          <label for="question">Test name</label>
+          <input type="text" class="form-control" id="question" placeholder="Enter question" name="question">
+          <small id="question" class="form-text text-muted">Enter the name of the question</small>
+    </div>
+    <input class="invisible" name="qnumber" value=<%=(parseInt(qnumber, 10)+1).toString()%> type="text">
+    <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Option 1" name="op1">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Option 2" name="op2">
+            </div>
+    </div>
+    <div class="row">
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Option 3" name="op3">
+            </div>
+            <div class="col">
+              <input type="text" class="form-control" placeholder="Option 4" name="op4">
+            </div>
+    </div>
+    <div class="form-group">
+      <label for="ans">Correct Answer</label>
+      <input type="text" class="form-control" id="ans" placeholder="Enter question" name="ans">
+      <small id="ans" class="form-text text-muted">Enter the correct option</small>
+</div>
+    <button type="submit" class="btn btn-primary">Add</button>
+    
+</form>
+<a href="/home"><button class="btn btn-danger">Done</button></a>
+
+
+<!-- Sidebar finish start -->
+</div>
+</div>
+</div>
+<!-- Sidebar finish end -->
+
+<a href="/logout">Logout</a>
+
+<% include partials/footer %>

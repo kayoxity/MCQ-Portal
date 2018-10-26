@@ -1,0 +1,29 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/home.css">
+<body>
+
+<% include partials/navbar %>
+<% include partials/sidebar %>
+
+<h1>Create a new Test</h1>
+
+<form action="/create" method="POST">
+    <div class="form-group">
+          <label for="testname">Test name</label>
+          <input type="text" class="form-control" id="testname" placeholder="Enter test name" name="testname">
+          <small id="testname" class="form-text text-muted">Enter the name of the test you want to create.</small>
+    </div>
+    <button type="submit" class="btn btn-primary">Start Adding Questions</button>
+</form>
+
+
+<!-- Sidebar finish start -->
+</div>
+</div>
+</div>
+<!-- Sidebar finish end -->
+
+<a href="/logout">Logout</a>
+
+<% include partials/footer %>

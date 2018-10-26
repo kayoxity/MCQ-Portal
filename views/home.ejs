@@ -1,9 +1,47 @@
 <% include partials/header %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/home.css">
 <body>
+
 <% include partials/navbar %>
+<% include partials/sidebar %>
+
+<div class="container-fluid row">
+    <div class="card col-4">
+        <div class="card-header">Night</div>
+        <div class="card-main">
+          <a href="/create"><button class="btn btn-danger">Create Test</button></a>
+          <div class="main-description">Hot Tub</div>
+        </div>
+    </div>
+
+    <% for (var i = 0; i < tests.length; i++) {%>
+    <div class="card col-4">
+      <div class="card-header"><%= tests[i].name %></div>
+      <div class="card-main">
+        <a href="<%= '/test/'+ i.toString() %>"><button class="btn btn-danger">Start Test</button></a>
+        <div class="main-description">Hot Tub</div>
+      </div>
+    </div>
+    <% } %>
+
+    <div class="card col-4">
+      <div class="card-header">Night</div>
+      <div class="card-main">
+        <a href="/create"><button class="btn btn-white">Disabled</button></a>
+        <div class="main-description">Hot Tub</div>
+      </div>
+    </div>
+    
+    
+</div>
 
 
-<h1>Hello there!</h1>
+<!-- Sidebar finish start -->
+</div>
+</div>
+</div>
+<!-- Sidebar finish end -->
 
 <a href="/logout">Logout</a>
 

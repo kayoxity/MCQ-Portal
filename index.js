@@ -5,7 +5,8 @@ var express = require('express'),
     passport = require('passport'),
     localStrategy = require('passport-local'),
     passportLocalMongoose = require('passport-local-mongoose'),
-    User = require('./models/user');
+    User = require('./models/user'),
+    {Test,Question} = require('./models/test');
 
 mongoose.connect("mongodb://localhost/test1", { useNewUrlParser: true });
 
@@ -34,8 +35,65 @@ function isLoggedIn(req,res,next){
     res.redirect('/login');
 }
 
+var current = new Test({
+    name : "",
+    questions : []
+});
+
+var testss = [];
+
+//Index page route
+
 app.get('/', (req,res) => {
     res.render('index');
+});
+
+//Create-test route
+
+app.get('/create',isLoggedIn,(req,res) => {
+    res.render('create',{name:req.user.username});
+});
+
+app.post('/create',isLoggedIn,(req,res) => {
+    var newTest = new Test({
+        name : req.body.testname
+    });
+    newTest.save((err,test) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            current = test;
+        }
+    });
+    res.redirect('/create/1');
+});
+
+//Add questions route
+
+app.get('/create/:num',isLoggedIn,(req,res) => {
+    res.render('createQ',{qnumber : req.params.num,name:req.user.username});
+});
+
+app.post('/create/num',isLoggedIn, (req,res) => {
+    current.questions.push({
+        question : req.body.question,
+        op1 : req.body.op1,
+        op2 : req.body.op2,
+        op3 : req.body.op3,
+        op4 : req.body.op4,
+        ans : req.body.ans
+    });
+    current.save((err,test) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            current = test;
+        }
+    });
+    var link = '/create/' + parseInt(req.body.qnumber, 10).toString();
+    res.redirect(link);
 });
 
 //Login route
@@ -74,8 +132,41 @@ app.post('/register', (req,res) => {
     });
 });
 
-app.get('/home' ,isLoggedIn, (req,res) => {
-    res.render('home');
+//Home route
+
+app.get('/home' ,function(req,res,next) {
+    Test.find((err,test) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            testss = test;
+        }
+        next();
+    });
+},
+isLoggedIn, (req,res) => {
+    
+    res.render('home',{name:req.user.username,tests : testss});
+});
+
+//Test start route
+
+app.get('/test/:num',function(req,res,next) {
+    Test.find((err,test) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            testss = test;
+        }
+        next();
+    });
+},
+    isLoggedIn, (req,res) => {
+        var num = req.params.num;
+        console.log(testss[num]);
+        res.render('test',{name:req.user.username,test:testss[num]});
 });
 
 
