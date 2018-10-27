@@ -1,6 +1,6 @@
 # MCQ-Portal
 
-# How to install :
+### How to install :
 
 sudo apt-get update
 sudo apt-get install nodejs, mongodb
@@ -11,7 +11,7 @@ Extract and go to repo directory
 Type : nodemon index.js
 http://localhost:3000/
 
-# Features added
+### Features added
 
 Sign Up/Log in/Log Out
 User Authentication
@@ -22,7 +22,7 @@ Create Test
 Take Test
 Once submitted that test won't show in profile
 
-# Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
+### Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
 
 Edit questions/delete questions (2)
 Separate setter and taker (1)
