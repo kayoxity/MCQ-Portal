@@ -141,7 +141,7 @@ function(req,res,next) {
         y.push(testSchema[i].testname)
     }
     // console.log(y);
-    res.render('home',{name:req.user.username,tests : testss,testSchema : y});
+    res.render('home',{name:req.user.username,tests : testss,testSchema : y,type : req.user.type});
 });
 
 
@@ -154,6 +154,7 @@ app.get('/profile',isLoggedIn,(req,res) => {
         college : req.user.college,
         roll : req.user.roll
     });
+    
 });
 
 //Edit profile route

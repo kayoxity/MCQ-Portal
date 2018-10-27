@@ -58,7 +58,7 @@
           <h1 id="name">Welcome <%=name.charAt(0).toUpperCase() + name.slice(1)%></h1>
         </div>
 
-
+        <% if(type == "Setter") { %>
         <div class="row text-center">
             <div class="card col-4">
                 <div class="card-header">Night</div>
@@ -67,6 +67,7 @@
                   <div class="main-description">Hot Tub</div>
                 </div>
             </div>
+          <% } %>
           
           <% for (var i = 0; i < tests.length; i++) {%>
             <% if(testSchema.indexOf(tests[i].name) != -1) { continue; } %>
