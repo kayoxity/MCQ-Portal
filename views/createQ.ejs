@@ -4,10 +4,9 @@
 <body>
 
 <% include partials/navbar %>
-<% include partials/sidebar %>
+<!-- <% include partials/sidebar %> -->
 
-<h1>Add question #<%=qnumber%></h1>
-<!-- "/create/"+(parseInt(qnumber, 10)+1).toString() -->
+<!-- <h1>Add question #<%=qnumber%></h1>
 <form action="/create/num" method="POST">
     <div class="form-group">
           <label for="question">Test name</label>
@@ -39,14 +38,68 @@
     <button type="submit" class="btn btn-primary">Add</button>
     
 </form>
-<a href="/home"><button class="btn btn-danger">Done</button></a>
+<a href="/home"><button class="btn btn-danger">Done</button></a> -->
 
 
 <!-- Sidebar finish start -->
+<!-- </div>
 </div>
-</div>
-</div>
+</div> -->
 <!-- Sidebar finish end -->
+
+
+<div style="margin-top: 69px;" id="wrapper">
+
+    <!-- Sidebar -->
+    <% include partials/side %>
+
+    <!-- Side navbar finished -->
+
+    <div id="content-wrapper">
+      <div style="padding-left:50px;padding-right: 50px;" class="container">
+        <div class="row">
+          <h1 id="name">Add Questions</h1>
+        </div>
+        <br><br>
+
+        <form action="/create/num" method="POST">
+          <div class="form-group">
+                <label class="h3">Question <%=qnumber%> </label>
+                <input type="text" class="form-control" placeholder="Enter question" name="question">
+          </div>
+          <input class="invisible" name="qnumber" value=<%=(parseInt(qnumber, 10)+1).toString()%> type="text">
+          <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Option 1" name="op1">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Option 2" name="op2">
+                  </div>
+          </div>
+          <br>
+          <div class="row">
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Option 3" name="op3">
+                  </div>
+                  <div class="col">
+                    <input type="text" class="form-control" placeholder="Option 4" name="op4">
+                  </div>
+          </div>
+          <br>
+          <div class="form-group">
+            <label>Correct Option</label>
+            <input type="text" class="form-control" placeholder="Enter question" name="ans">
+      </div>
+          <button type="submit" class="btn btn-primary">Add</button>
+          <a href="/home"><button class="btn btn-primary" type="button">Done</button></a>
+      </form> 
+
+          </div>
+          
+      </div>
+      
+  </div>
+</div>
 
 <a href="/logout">Logout</a>
 

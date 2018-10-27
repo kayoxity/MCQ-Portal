@@ -51,17 +51,6 @@ var current = new Test({
     questions : []
 });
 
-var currentProfile = new User({
-    username : "",
-    password : "",
-    tests : [],
-    type : "",
-    gender : "",
-    roll : "",
-    college : "",
-    email : ""
-});
-
 var testss = [];
 
 

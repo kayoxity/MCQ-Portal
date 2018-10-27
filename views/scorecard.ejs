@@ -4,7 +4,7 @@
 <body>
 
 <% include partials/navbar %>
-<% include partials/sidebar %>
+<!-- <% include partials/sidebar %>
 
 <div class="container-fluid">
     <h1>View your scorecard</h1>
@@ -19,14 +19,69 @@
     <div id="demo1">
         <span id="demo2">Score : </span> <span id="demo3"></span>
     </div>
-</div>
+</div> -->
 
 
 <!-- Sidebar finish start -->
+<!-- </div>
 </div>
-</div>
-</div>
+</div> -->
 <!-- Sidebar finish end -->
+
+
+
+<div style="margin-top: 69px;" id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar navbarr-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">
+                <i class="fas fa-fw fa-user-circle"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/editprofile">
+                <i class="fas fa-fw fa-user-edit"></i>
+                <span>Edit Profile</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/scorecard">
+                <i class="fas fa-fw fa-table"></i>
+                <span>View Scorecard</span></a>
+            </li>
+          </ul>
+    
+        <!-- Side navbar finished -->
+    
+        <div id="content-wrapper">
+          <div style="padding-left:50px;padding-right: 50px;" class="container">
+            <div class="row">
+              <h1 id="name">Welcome <%=name.charAt(0).toUpperCase() + name.slice(1)%></h1>
+            </div>
+    
+  
+            <br>
+            <form>
+                    <div class="form-group">
+                      <input type="text" class="form-control" id="search" required placeholder="Enter test name">
+                      <small class="form-text text-muted">Enter the name of the test whose score you want to view.</small>
+                    </div>
+                    <button type="button" class="btn btn-primary" onclick="loadDoc()"">Ok</button>
+                </form>
+                <br>
+                <div id="demo1">
+                    <span id="demo2">Score : </span> <span id="demo3"></span>
+                </div>
+  
+            
+             
+              </div>
+              
+          </div>
+          
+      </div>
+    </div>
 
 <a href="/logout">Logout</a>
 
