@@ -2,9 +2,9 @@
 
 ### How to install :
 
-sudo apt-get update
-sudo apt-get install nodejs, mongodb
-npm install
+- sudo apt-get update
+- sudo apt-get install nodejs, mongodb
+- npm install
 
 Download repo.
 Extract and go to repo directory
