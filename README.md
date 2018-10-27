@@ -20,7 +20,7 @@
 - View Scorecard
 - Create Test
 - Take Test
-- Once submitted that test won't show in profile
+- Once submitted that test won't show in that specific profile
 
 ### Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
 
@@ -28,6 +28,6 @@
 - Separate setter and taker (1)
 - Reset response to question (1)
 - Edit password (3)
-- Add timer(2)
+- Add timer(1)
 - ADD UI(3)
 - Add rankcard(2) (Will require lame coding)
