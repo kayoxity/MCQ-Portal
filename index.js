@@ -92,7 +92,7 @@ app.post('/register', (req,res) => {
     req.body.password;
     User.register(new User({
         username : req.body.username,
-        type : "Setter",
+        type : req.body.type,
         gender : req.body.gender,
         roll : req.body.roll,
         college : req.body.college,

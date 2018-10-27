@@ -16,10 +16,11 @@
 - Create Test
 - Take Test
 - Once submitted that test won't show in specific profile
+- Separate setter and taker
+- ADD UI
+- Reset response to question
 ### Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
 - Edit questions/delete questions (2)
-- Separate setter and taker (1)
-- Reset response to question (1)
 - Edit password (3)
 - Add timer(2)
-- ADD UI(3)
+- Rankcard (2)

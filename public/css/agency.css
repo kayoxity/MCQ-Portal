@@ -14,7 +14,7 @@ p {
 }
 
 a {
-  color: #fed136;
+  color: white;
 }
 
 a:hover {
@@ -634,6 +634,8 @@ section#contact :-ms-input-placeholder {
 }
 
 footer {
+  background: #212529;
+  color: white;
   padding: 25px 0;
   text-align: center;
 }
@@ -646,6 +648,7 @@ footer span.copyright {
 }
 
 footer ul.quicklinks {
+  color: white;
   font-size: 90%;
   line-height: 40px;
   margin-bottom: 0;
