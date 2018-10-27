@@ -16,6 +16,7 @@
     </div>
 
     <% for (var i = 0; i < tests.length; i++) {%>
+    <% if(testSchema.indexOf(tests[i].name) != -1) { continue; } %>
     <div class="card col-4">
       <div class="card-header"><%= tests[i].name %></div>
       <div class="card-main">

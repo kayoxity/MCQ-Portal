@@ -1,0 +1,31 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/home.css">
+<body>
+
+<% include partials/navbar %>
+<% include partials/sidebar %>
+
+<div class="container">
+    <h1>Profile page</h1>
+    <br>
+    <div class="row">
+        <div class="col-sm">Name : <%=name.charAt(0).toUpperCase() + name.slice(1)%></div>
+        <div class="col-sm">Roll : <%=roll%></div>
+    </div>
+    <div class="row">
+        <div class="col-sm">Email : <%=email%></div>
+        <div class="col-sm">College : <%=college%></div>
+    </div>
+</div>
+
+
+<!-- Sidebar finish start -->
+</div>
+</div>
+</div>
+<!-- Sidebar finish end -->
+
+<a href="/logout">Logout</a>
+
+<% include partials/footer %>

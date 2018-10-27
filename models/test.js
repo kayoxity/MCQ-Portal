@@ -9,7 +9,7 @@ var questionSchema = new mongoose.Schema({
     ans : String
 });
 
-var Question = mongoose.model("Question",questionSchema);
+//var Question = mongoose.model("Question",questionSchema);
 
 var testSchema = new mongoose.Schema({
     name : String,
@@ -64,4 +64,4 @@ var Test = mongoose.model("Test",testSchema);
 //     }
 // });
 
-module.exports = {Test,Question};
+module.exports = Test;

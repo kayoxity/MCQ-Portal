@@ -2,12 +2,27 @@
 <body>
 <% include partials/navbar %>
 
+
+
+<div class="container">
+
 <h1>Login Form</h1>
 
 <form action="/login" method="POST">
-    <input type="text" autofocus name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <button>Submit</button>
+    <div class="row">
+    <div class="form-group col">
+      <label for="username">Email Address</label>
+      <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+    </div>
+    <div class="form-group col">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+    </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+</div>
+
+<a href="/register"><button class="btn btn-primary">SignUp</button></a>
 
 <% include partials/footer %>

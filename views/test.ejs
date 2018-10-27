@@ -6,19 +6,22 @@
 <% include partials/navbar %>
 <% include partials/sidebar %>
 
+<% var siz = JSON.stringify(test.questions.length) %>
+
+
 <% for (var i = 0; i < test.questions.length; i++) { %>
 <div class="container-fluid">
     <h1>Q<%= (i+1) %> : <%= test.questions[i].question %></h1><br>
     <form>
         <div class="row">
             <div class="col">
-                <input class="form-check-input" type="radio" name="answeroption" id="op1" value="op1">
+                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op1" value="op1">
                     <label class="form-check-label" for="op1">
                         <%= test.questions[i].op1 %>
                     </label>
             </div>
             <div class="col">
-                <input class="form-check-input" type="radio" name="answeroption" id="op2" value="op2">
+                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op2" value="op2">
                     <label class="form-check-label" for="examplop2eRadios2">
                         <%= test.questions[i].op2 %>
                     </label>
@@ -26,25 +29,27 @@
         </div>
         <div class="row">
             <div class="col">
-                <input class="form-check-input" type="radio" name="answeroption" id="op3" value="op3">
+                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op3" value="op3">
                     <label class="form-check-label" for="op3">
                         <%= test.questions[i].op3 %>
                     </label>
             </div>
             <div class="col">
-                <input class="form-check-input" type="radio" name="answeroption" id="op4" value="op4">
+                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op4" value="op4">
                     <label class="form-check-label" for="op4">
-                        <%= test.questions[i].ans %>
+                        <%= test.questions[i].op4 %>
                     </label>
             </div>
         </div>
-        <button type="button" onclick="checkAnswer(<%= test.questions[i].ans %>)">Click me</button>
+        <button type="button" onclick="checkAnswer(<%= JSON.stringify(test.questions[i].ans)  %>,<%= i %>)">Click me</button>
     </form>
 </div>
 <% } %>
 
-
-<div id="demo">Hi</div>
+<form action="/test/num" method="POST">
+    <input name="score" type="text" style="visibility : hidden" value=0 id="score">
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
 
 
 
@@ -61,10 +66,44 @@
 <a href="/logout">Logout</a>
 
 <script>
-    function checkAnswer(ans) {
-        // var x = document.getElementsByName("answeroption").values();
-        console.log("Hi");
-        document.getElementById("demo").innerHTML = ans;
+    var score = 0;
+    var size = <%=siz%>;
+    var answeredCorrect = [];
+    for(var i = 0;i < size;i++)
+    {
+        answeredCorrect.push(false);
+    }
+    //console.log(answeredCorrect);
+    function checkAnswer(ans,i) {
+        var x = document.querySelectorAll("input[name=answeroption"+i+"]");
+        var selected = -1;
+        if(x[0].checked){
+            selected = 1;
+        }
+        else if(x[1].checked){
+            selected = 2;
+        }
+        else if(x[2].checked){
+            selected = 3;
+        }
+        else if(x[3].checked){
+            selected = 4;
+        }
+        else{
+            selected = -1;
+        }
+        if(selected == parseInt(ans, 10) && answeredCorrect[i] == false)
+        {
+            score++;
+            answeredCorrect[i] = true;
+        }
+        else if(selected != parseInt(ans, 10) && answeredCorrect[i] == true)
+        {
+            score--;
+            answeredCorrect[i] = false;
+        }
+        //console.log(score);
+        document.getElementById("score").value = score;
     }
 </script>
 

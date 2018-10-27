@@ -2,13 +2,46 @@
 <body>
 <% include partials/navbar %>
 
+
+<div class="container">
 <h1>Registration Form</h1>
 
 <form action="/register" method="POST">
-    <input type="text" name="username" placeholder="Username">
-    <input type="password" name="password" placeholder="Password">
-    <button>Submit</button>
+    <div class="form-row">
+        <div class="form-group col">
+          <label for="username">Username</label>
+          <input type="text" class="form-control" id="username" placeholder="Username" name="username">
+        </div>
+        <div class="form-group col">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+          <label for="email">Email Address</label>
+          <input type="email" class="form-control" id="email" placeholder="Email address" name="email">
+        </div>
+        <div class="form-group col">
+          <label for="roll">Roll Number</label>
+          <input type="text" class="form-control" id="roll" placeholder="Roll number" name="roll">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+          <label for="gender">Gender</label>
+          <input type="text" class="form-control" id="gender" placeholder="Gender" name="gender">
+        </div>
+        <div class="form-group col">
+          <label for="college">College name</label>
+          <input type="text" class="form-control" id="college" placeholder="College name" name="college">
+        </div>
+    </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
 </form>
+
+</div>
+
 
 <a href="/login">Login</a><br>
 <a href="/logout">Logout</a>

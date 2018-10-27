@@ -1,0 +1,56 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/home.css">
+<body>
+
+<% include partials/navbar %>
+<% include partials/sidebar %>
+
+<div class="container-fluid">
+    <h1>View your scorecard</h1>
+    <form>
+        <div class="form-group">
+          <input type="text" class="form-control" id="search" placeholder="Enter test name">
+          <small class="form-text text-muted">Enter the name of the test whose score you want to view.</small>
+        </div>
+        <button type="button" class="btn btn-primary" onclick="loadDoc()"">Ok</button>
+    </form>
+    <br>
+    <div id="demo1">
+        <span id="demo2">Score : </span> <span id="demo3"></span>
+    </div>
+</div>
+
+
+<!-- Sidebar finish start -->
+</div>
+</div>
+</div>
+<!-- Sidebar finish end -->
+
+<a href="/logout">Logout</a>
+
+
+<script>
+        function loadDoc() {
+          var xhttp = new XMLHttpRequest();
+          xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                console.log(this.responseText);
+                if(this.responseText == "-1"){
+                    document.getElementById("demo1").innerHTML = '<span id="demo2">Test does not exist</span> <span id="demo3"></span>';
+                }
+                else{
+                    document.getElementById("demo3").innerHTML = this.responseText;
+                    document.getElementById("demo2").innerHTML = "Score :";
+                }
+            }
+          };
+        //   console.log("scorecard/a?data="+document.getElementById('search').value);
+          let a = "scorecard/a?test="+document.getElementById('search').value;
+          xhttp.open("GET",a, true);
+          xhttp.send();
+        }
+</script>
+
+<% include partials/footer %>
