@@ -3,45 +3,6 @@
 <% include partials/navbar %>
 
 
-<!-- <div class="container">
-<h1>Registration Form</h1>
-
-<form action="/register" method="POST">
-    <div class="form-row">
-        <div class="form-group col">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" placeholder="Username" name="username">
-        </div>
-        <div class="form-group col">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" placeholder="Password" name="password">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col">
-          <label for="email">Email Address</label>
-          <input type="email" class="form-control" id="email" placeholder="Email address" name="email">
-        </div>
-        <div class="form-group col">
-          <label for="roll">Roll Number</label>
-          <input type="text" class="form-control" id="roll" placeholder="Roll number" name="roll">
-        </div>
-    </div>
-    <div class="form-row">
-        <div class="form-group col">
-          <label for="gender">Gender</label>
-          <input type="text" class="form-control" id="gender" placeholder="Gender" name="gender">
-        </div>
-        <div class="form-group col">
-          <label for="college">College name</label>
-          <input type="text" class="form-control" id="college" placeholder="College name" name="college">
-        </div>
-    </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-</form>
-
-</div> -->
-
 <div class="limiter">
   <div class="container-login100" style="background-image: url('images/bg-01.jpg');">
     <div style="margin-top:100px;margin-bottom:50px;" class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
@@ -52,32 +13,32 @@
 
         <div class="wrap-input100 validate-input m-b-23">
           <span class="label-input100">Username</span>
-          <input class="input100" type="text" autofocus name="username" required placeholder="Type your username">
-          <span class="focus-input100" data-symbol="&#xf206;"></span>
+          <input class="input100" type="text" autofocus name="username" autofocus required placeholder="Type your username">
         </div>
 
         <div class="wrap-input100 validate-input">
           <span class="label-input100">Password</span>
           <input class="input100" type="password" name="password" required placeholder="Type your password">
-          <span class="focus-input100" data-symbol="&#xf190;"></span>
         </div>
-
+        <br>
+        <div class="wrap-input100 validate-input">
+          <span class="label-input100">Confirm Password</span>
+          <input class="input100" type="password" name="password2" required placeholder="Re-type password">
+        </div>
+        <br>
         <div class="wrap-input100 validate-input m-b-23">
           <span class="label-input100">Roll Number</span>
           <input class="input100" type="text" name="roll" required placeholder="Type your roll number">
-          <span class="focus-input100" data-symbol="&#xf206;"></span>
         </div>
 
         <div class="wrap-input100 validate-input">
           <span class="label-input100">Email</span>
           <input class="input100" type="email" name="email" required placeholder="Type your email">
-          <span class="focus-input100" data-symbol="&#xf190;"></span>
         </div>
-
+        <br>
         <div class="wrap-input100 validate-input m-b-23">
           <span class="label-input100">College</span>
           <input class="input100" type="text" name="college" required placeholder="Type your college">
-          <span class="focus-input100" data-symbol="&#xf206;"></span>
         </div>
 
         <div class="wrap-input100 validate-input">
@@ -86,9 +47,6 @@
                 <option value="male">Male</option>
                 <option value="female">Female</option>
             </select>
-          <!-- <span class="label-input100">Gender</span>
-          <input class="input100" type="text" name="gender" required placeholder="Type your gender">
-          <span class="focus-input100" data-symbol="&#xf190;"></span> -->
         </div>
         <br>
         <div class="wrap-input100 validate-input">
@@ -108,7 +66,23 @@
               Register
             </button>
           </div>
-        </div>        
+        </div>
+        <br><br><br><br>
+        <div class="text-center">
+          Or Login Using 
+          <div class="container-login100-form-btn">
+            <div class="wrap-login100-form-btn">
+              <div class="login100-form-bgbtn"></div>
+              <a href="/login">
+              <button class="login100-form-btn" type="button">
+                Log In
+              </button>
+            </a>
+            </div>
+          </div>
+        </div>
+         
+
       </form>
     </div>
   </div>

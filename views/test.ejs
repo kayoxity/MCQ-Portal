@@ -1,6 +1,6 @@
 <% include partials/header %>
 <link rel="stylesheet" href="/css/sidebar.css">
-<link rel="stylesheet" href="/css/home.css">
+<!-- <link rel="stylesheet" href="/css/home.css"> -->
 <body>
 
 <% include partials/navbar %>
@@ -14,12 +14,18 @@
     <!-- Side navbar finished -->
 
     <div id="content-wrapper">
+        <div class="time-wrapper">
+        <h3>Time : <span id="time"></span></h3>
+        </div>
       <div style="padding-left:50px;padding-right: 50px;" class="container">
         <div class="row">
           <h1 id="name"><%= test.name %> Test</h1>
         </div>
+        
+        
+        
         <br><br>
-
+<% var time = JSON.stringify(test.time) %>
 <% var siz = JSON.stringify(test.questions.length) %>
 
 
@@ -74,6 +80,7 @@
 </div>
 
 <script>
+    window.onpaint = timer();
     var score = 0;
     var size = <%=siz%>;
     var answeredCorrect = [];
@@ -126,6 +133,37 @@
         //console.log(score);
         document.getElementById("score").value = score;
     }
+
+    //timer
+    function timer(){
+        console.log(<%= time %>);
+    var distance = <%= time %>*1000*60;
+    
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+    // Find the distance between now and the count down date
+    distance = distance - 1000;
+
+    // Time calculations for days, hours, minutes and seconds
+    
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // Display the result in the element with id="demo"
+    document.getElementById("time").innerHTML =  hours + "h "
+    + minutes + "m " + seconds + "s ";
+
+    // If the count down is finished, write some text
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("time").innerHTML = "EXPIRED";
+    }
+    }, 1000);
+    }
+
+
 </script>
 
 <% include partials/footer %>

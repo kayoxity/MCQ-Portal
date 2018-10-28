@@ -7,17 +7,17 @@
 
 @font-face {
   font-family: Poppins-Regular;
-  src: url('../fonts/poppins/Poppins-Regular.ttf'); 
+  src: url('/fonts/poppins/Poppins-Regular.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-Medium;
-  src: url('../fonts/poppins/Poppins-Medium.ttf'); 
+  src: url('/fonts/poppins/Poppins-Medium.ttf'); 
 }
 
 @font-face {
   font-family: Poppins-Bold;
-  src: url('../fonts/poppins/Poppins-Bold.ttf'); 
+  src: url('/fonts/poppins/Poppins-Bold.ttf'); 
 }
 
 @font-face {
@@ -60,9 +60,10 @@ a:focus {
 }
 
 a:hover {
-	text-decoration: none;
-  color: #a64bf4;
+  color: inherit;
+  text-decoration: inherit;
 }
+
 
 /*---------------------------------------------*/
 h1,h2,h3,h4,h5,h6 {
@@ -233,7 +234,7 @@ iframe {
   width: 100%;
   height: 55px;
   background: transparent;
-  padding: 0 7px 0 43px;
+  padding: 0 7px 0 7px;
 }
 
 
@@ -367,6 +368,7 @@ iframe {
   width: 100%;
   height: 50px;
 }
+
 
 .wrap-login100-form-btn:hover .login100-form-bgbtn {
   left: 0;

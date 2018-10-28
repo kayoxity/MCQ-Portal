@@ -36,6 +36,14 @@ function isLoggedIn(req,res,next){
     res.redirect('/login');
 }
 
+function samePassword(req,res,next){
+    if(req.body.password == req.body.password2)
+    {
+        return next();
+    }
+    res.redirect('/register');
+}
+
 
 
 
@@ -87,7 +95,7 @@ app.get('/register', (req,res) => {
     res.render('register');
 });
 
-app.post('/register', (req,res) => {
+app.post('/register',samePassword, (req,res) => {
     req.body.username;
     req.body.password;
     User.register(new User({
@@ -110,7 +118,7 @@ app.post('/register', (req,res) => {
 
 //Home route
 
-app.get('/home' ,function(req,res,next) {
+app.get('/home' ,isLoggedIn,function(req,res,next) {
     Test.find((err,test) => {
         if(err){
             console.log(err);
@@ -121,7 +129,6 @@ app.get('/home' ,function(req,res,next) {
         next();
     });
 },
-isLoggedIn,
 function(req,res,next) {
     User.find({ username : req.user.username}).populate("tests").exec((err,user) => {
         if(err){
@@ -199,7 +206,8 @@ app.get('/create',isLoggedIn,(req,res) => {
 
 app.post('/create',isLoggedIn,(req,res) => {
     var newTest = new Test({
-        name : req.body.testname
+        name : req.body.testname,
+        time : (parseInt(req.body.hour,10)*60)+parseInt(req.body.min,10)
     });
     newTest.save((err,test) => {
         if(err){

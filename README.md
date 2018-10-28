@@ -15,12 +15,13 @@
 - View Scorecard
 - Create Test
 - Take Test
-- Once submitted that test won't show in specific profile
+- Once submitted, that test won't show in his/her profile
 - Separate setter and taker
 - ADD UI
 - Reset response to question
+- Confirm password
+- Added timer
 ### Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
 - Edit questions/delete questions (2)
 - Edit password (3)
-- Add timer(2)
 - Rankcard (2)

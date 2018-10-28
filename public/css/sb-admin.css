@@ -436,9 +436,15 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   margin-left: 20px;
 }
 
-.time{
+.time-wrapper{
+  position: fixed;
+  display: block;
   float: right;
-  margin-right: 20px;
+  right:20px;
+}
+
+.time{
+  
 }
 
 .option{

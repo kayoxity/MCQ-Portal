@@ -68,7 +68,7 @@
                 </div>
             </div>
           <% } %>
-          <% if(tests.length == 0 && type == "student") { %>
+          <% if(testSchema.length == tests.length && type == "student") { %>
             <br>
             <div class="alert alert-danger" role="alert">
               No test available at this point!
