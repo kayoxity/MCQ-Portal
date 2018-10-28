@@ -6,7 +6,7 @@
 <% include partials/navbar %>
 
 
-<div style="margin-top: 69px;" id="wrapper">
+<div id="wrapper">
 
     <!-- Sidebar -->
     <% include partials/side %>
@@ -15,6 +15,7 @@
 
     <div id="content-wrapper">
         <div class="time-wrapper">
+            <br>
         <h3>Time : <span id="time"></span></h3>
         </div>
       <div style="padding-left:50px;padding-right: 50px;" class="container">
@@ -29,45 +30,52 @@
 <% var siz = JSON.stringify(test.questions.length) %>
 
 
-<% for (var i = 0; i < test.questions.length; i++) { %>
-<div class="container-fluid">
-    <h3 class="h3">Q<%= (i+1) %> : <%= test.questions[i].question %></h1><br>
-    <form>
-        <div class="row">
-            <div class="col">
-                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op1" value="op1">
-                    <label class="form-check-label" for="op1">
-                        <%= test.questions[i].op1 %>
-                    </label>
-            </div>
-            <div class="col">
-                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op2" value="op2">
-                    <label class="form-check-label" for="examplop2eRadios2">
-                        <%= test.questions[i].op2 %>
-                    </label>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col">
-                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op3" value="op3">
-                    <label class="form-check-label" for="op3">
-                        <%= test.questions[i].op3 %>
-                    </label>
-            </div>
-            <div class="col">
-                <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op4" value="op4">
-                    <label class="form-check-label" for="op4">
-                        <%= test.questions[i].op4 %>
-                    </label>
-            </div>
-        </div>
-        <button type="button" class="btn btn-primary" onclick="checkAnswer(<%= JSON.stringify(test.questions[i].ans)  %>,<%= i %>)">Save</button>
-        <button type="button" class="btn btn-primary" onclick="resett(<%= i %>)">Reset</button>
-    </form>
-</div>
-<% } %>
 
-<form class="text-center" action="/test/num" method="POST">
+<% for (var i = 0; i < test.questions.length; i++) { %>
+        <div class="test">
+                <div class="test-header raleway">Q<%= i+1 %>. <%= test.questions[i].question %></div>
+                <div class="test-main">
+                    <div class="container">
+                        <div class="row">
+                                <div class="col padding-right">
+                                    <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op1" value="op1">
+                                        <label class="form-check-label raleway" for="op1">
+                                            <%= test.questions[i].op1 %>
+                                        </label>
+                                </div>
+                                <div class="col padding-right">
+                                    <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op2" value="op2">
+                                        <label class="form-check-label raleway" for="op2">
+                                            <%= test.questions[i].op2 %>
+                                        </label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col padding-right">
+                                    <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op3" value="op3">
+                                        <label class="form-check-label raleway" for="op3">
+                                            <%= test.questions[i].op3 %>
+                                        </label>
+                                </div>
+                                <div class="col padding-right">
+                                    <input class="form-check-input" type="radio" name=<%="answeroption"+i%> id="op4" value="op4">
+                                        <label class="form-check-label raleway" for="op4">
+                                            <%= test.questions[i].op4 %>
+                                        </label>
+                                </div>
+                            </div>
+                        </div>
+                </div>
+                <div class="row center-button">
+                    <button type="button" class="btn btn-primary save" onclick="checkAnswer(<%= JSON.stringify(test.questions[i].ans)  %>,<%= i %>)">Save</button>
+                    <button type="button" class="btn btn-danger reset" onclick="resett(<%= i %>)">Reset</button>
+                </div>
+                <br>
+            </div>
+
+<% } %>
+<br>
+<form class="text-center" action="/test/num" method="POST" id="form1">
     <input name="score" type="text" style="display : none" value=0 id="score">
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
@@ -80,7 +88,6 @@
 </div>
 
 <script>
-    window.onpaint = timer();
     var score = 0;
     var size = <%=siz%>;
     var answeredCorrect = [];
@@ -135,8 +142,8 @@
     }
 
     //timer
-    function timer(){
-        console.log(<%= time %>);
+    
+        // console.log(<%= time %>);
     var distance = <%= time %>*1000*60;
     
     // Update the count down every 1 second
@@ -157,12 +164,13 @@
 
     // If the count down is finished, write some text
     if (distance < 0) {
+        document.getElementById('form1').submit();
         clearInterval(x);
         document.getElementById("time").innerHTML = "EXPIRED";
     }
     }, 1000);
-    }
-
+    
+    
 
 </script>
 

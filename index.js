@@ -36,6 +36,16 @@ function isLoggedIn(req,res,next){
     res.redirect('/login');
 }
 
+function logout(req,res,next) {
+    if(req.isAuthenticated()){
+        loggedIn = true;
+    }
+    else{
+        loggedIn = false;
+    }
+    return next();
+}
+
 function samePassword(req,res,next){
     if(req.body.password == req.body.password2)
     {
@@ -47,7 +57,7 @@ function samePassword(req,res,next){
 
 
 
-
+var loggedIn = false;
 var testSchema = [];
 
 
@@ -69,13 +79,19 @@ var testss = [];
 
 //Index page route
 
-app.get('/', (req,res) => {
-    res.render('index');
+app.get('/', logout, (req,res) => {
+    res.render('index',{loggedIn : loggedIn});
 });
 
 //Login route
-app.get('/login', (req,res) => {
-    res.render('login');
+app.get('/login',logout, (req,res) => {
+    if(loggedIn == true)
+    {
+        res.redirect('/home');
+    }
+    else{
+        res.render('login',{loggedIn : loggedIn});
+    }
 });
 
 app.post('/login',passport.authenticate('local', {
@@ -91,8 +107,15 @@ app.get('/logout',(req,res) => {
 });
 
 //Register route
-app.get('/register', (req,res) => {
-    res.render('register');
+app.get('/register',logout, (req,res) => {
+    if(loggedIn == true)
+    {
+        res.redirect('/home');
+    }
+    else{
+        res.render('register',{loggedIn : loggedIn});
+    }
+    
 });
 
 app.post('/register',samePassword, (req,res) => {
@@ -108,7 +131,7 @@ app.post('/register',samePassword, (req,res) => {
     }), req.body.password , function(err,user) {
         if(err){
             console.log(err);
-            return res.render('register');
+            res.redirect('register');
         }
         passport.authenticate('local')(req,res,function() {
             res.redirect('/');
@@ -118,7 +141,7 @@ app.post('/register',samePassword, (req,res) => {
 
 //Home route
 
-app.get('/home' ,isLoggedIn,function(req,res,next) {
+app.get('/home' ,logout,isLoggedIn,function(req,res,next) {
     Test.find((err,test) => {
         if(err){
             console.log(err);
@@ -148,30 +171,32 @@ function(req,res,next) {
         y.push(testSchema[i].testname)
     }
     // console.log(y);
-    res.render('home',{name:req.user.username,tests : testss,testSchema : y,type : req.user.type});
+    res.render('home',{name:req.user.username,tests : testss,testSchema : y,type : req.user.type,loggedIn : loggedIn});
 });
 
 
 //Profile route
-app.get('/profile',isLoggedIn,(req,res) => {
+app.get('/profile',logout,isLoggedIn,(req,res) => {
     // console.log(req.user);
     res.render('profile',{
         name : req.user.username,
         email : req.user.email,
         college : req.user.college,
-        roll : req.user.roll
+        roll : req.user.roll,
+        loggedIn : loggedIn
     });
     
 });
 
 //Edit profile route
-app.get('/editprofile',isLoggedIn,(req,res) => {
+app.get('/editprofile',logout,isLoggedIn,(req,res) => {
     res.render('editprofile',{
         name : req.user.username,
         email : req.user.email,
         college : req.user.college,
         roll : req.user.roll,
-        gender : req.user.gender
+        gender : req.user.gender,
+        loggedIn : loggedIn
     });
 });
 
@@ -200,14 +225,24 @@ app.post('/editprofile',isLoggedIn,(req,res) => {
 
 //Create-test route
 
-app.get('/create',isLoggedIn,(req,res) => {
-    res.render('create',{name:req.user.username});
+app.get('/create',logout,isLoggedIn,(req,res) => {
+    res.render('create',{name:req.user.username,loggedIn : loggedIn});
 });
 
 app.post('/create',isLoggedIn,(req,res) => {
+    let t = 0;
+    let a = false;
+    if(req.body.hour)
+    {
+        t = (parseInt(req.body.hour,10)*60);
+        a = true;
+    }
+    if(req.body.min && a == true){
+        t = t + parseInt(req.body.min,10)
+    }
     var newTest = new Test({
         name : req.body.testname,
-        time : (parseInt(req.body.hour,10)*60)+parseInt(req.body.min,10)
+        time : t
     });
     newTest.save((err,test) => {
         if(err){
@@ -222,8 +257,8 @@ app.post('/create',isLoggedIn,(req,res) => {
 
 //Add questions route
 
-app.get('/create/:num',isLoggedIn,(req,res) => {
-    res.render('createQ',{qnumber : req.params.num,name:req.user.username});
+app.get('/create/:num',logout,isLoggedIn,(req,res) => {
+    res.render('createQ',{qnumber : req.params.num,name:req.user.username,loggedIn : loggedIn});
 });
 
 app.post('/create/num',isLoggedIn, (req,res) => {
@@ -249,7 +284,7 @@ app.post('/create/num',isLoggedIn, (req,res) => {
 
 //Test start route
 
-app.get('/test/:num',function(req,res,next) {
+app.get('/test/:num',logout,function(req,res,next) {
     Test.find((err,test) => {
         if(err){
             console.log(err);
@@ -263,7 +298,7 @@ app.get('/test/:num',function(req,res,next) {
     isLoggedIn, (req,res) => {
         var num = req.params.num;
         current = testss[num];
-        res.render('test',{name:req.user.username,test:testss[num]});
+        res.render('test',{name:req.user.username,test:testss[num],loggedIn : loggedIn});
 });
 
 app.post('/test/num',isLoggedIn,(req,res) => {
@@ -283,12 +318,12 @@ app.post('/test/num',isLoggedIn,(req,res) => {
 });
 
 //Scorecard route
-app.get('/scorecard',isLoggedIn,(req,res) => {
-    res.render('scorecard',{name:req.user.username});
+app.get('/scorecard',logout,isLoggedIn,(req,res) => {
+    res.render('scorecard',{name:req.user.username,loggedIn : loggedIn});
 });
 
 
-app.get('/scorecard/a',(req,res) => {
+app.get('/scorecard/a',logout,(req,res) => {
     var tester = req.query.test;
     // console.log(tester);
     var score = -1;

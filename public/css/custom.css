@@ -1,0 +1,145 @@
+@font-face {
+    font-family: "Bleeding Cowboys";
+    src: url('/fonts/custom/Bleeding_Cowboys.ttf'); 
+  }
+
+  @font-face {
+    font-family: "Raleway";
+    src: url('/fonts/custom/Raleway-Regular.ttf'); 
+  }
+
+  @font-face {
+    font-family: "Artbrush";
+    src: url('/fonts/custom/Artbrush.ttf'); 
+  }
+
+
+
+/* Navbar start */
+
+.navbar-brand , .navbar-dark .navbar-brand {
+    font-family: "Bleeding Cowboys";
+    font-size: 24px;
+    color: cyan;
+}
+
+.navbar-dark .navbar-brand:hover{
+    color: rgb(219, 255, 243);
+}
+
+#mainNav .navbar-nav .nav-item .nav-link:hover {
+    color: cyan;
+}
+
+.navbar{
+    padding: none;
+    height: 60px;;
+}
+
+/* Index start */
+
+header.masthead .intro-text .intro-lead-in {
+    font-family: "Raleway";
+    font-style: normal;
+}
+
+/* Login start */
+
+.p-b-4 {
+    font-family: "Raleway";
+}
+
+#wrapper{
+    margin-top: 60px;
+}
+
+/* Finish */
+
+#name{
+    font-family: "ArtBrush";
+    /* text-transform: lowercase; */
+    color: rgb(17, 36, 36);
+    /* text-shadow: 0 0 1px rgb(0, 109, 109); */
+}
+
+.font-changed{
+    font-family: "Alien League Bold";
+    font-weight: 800;
+}
+
+.raleway{
+    font-family: "Raleway";
+}
+
+.test {
+    padding: 0;
+    display: flex;                /* Children use Flexbox */
+    flex-direction: column;       /* Rotate Axis */
+    border: 1px solid #212529;    /* Set up Border */
+    border-radius: 4px;           /* Slightly Curve edges */
+    overflow: hidden;             /* Fixes the corners */
+    margin: 5px;                  /* Add space between cards */
+    box-shadow: 4px 4px 2px #21252936;
+    margin-bottom: 20px;
+    background-color: rgb(234, 241, 240);
+  }
+  
+  .test-header {
+    color: #212529;
+    font-size: 24px;
+    font-weight: 600;
+    border-bottom: 1px solid #212529;
+    /* background-color: rgb(0, 78, 78); */
+    padding: 5px 10px;
+  }
+
+  .test-main {
+    justify-content: center;    /* Group Children in Center */
+    align-items: center;        /* Group Children in Center (on cross axis) */
+   
+  }
+
+  .padding-right{
+      padding-left: 50px;
+      padding-top: 5px;
+  }
+
+  .save , .reset {
+      display: inline;
+      width: 100px;
+      margin-bottom: 12px;
+      margin-top: 8px;
+      text-align: center;
+  }
+
+  .reset{
+      margin-left: 25px;
+  }
+
+  .center-button{
+    text-align: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  .time-wrapper{
+      background: white;
+  }
+
+.questions{
+    position: relative;
+}
+
+.back{
+    right: 0;
+    position: absolute;
+}
+
+.finish{
+    
+    left: 20px;
+}
+
+.add , .finish{
+    width: 100px;
+}

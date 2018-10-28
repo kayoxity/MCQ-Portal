@@ -5,27 +5,9 @@
 
 <% include partials/navbar %>
 
-<!-- <% include partials/sidebar %>
-
-<h1>Create a new Test</h1>
-
-<form action="/create" method="POST">
-    <div class="form-group">
-          <label for="testname">Test name</label>
-          <input type="text" class="form-control" id="testname" placeholder="Enter test name" name="testname">
-          <small id="testname" class="form-text text-muted">Enter the name of the test you want to create.</small>
-    </div>
-    <button type="submit" class="btn btn-primary">Start Adding Questions</button>
-</form> -->
 
 
-<!-- Sidebar finish start -->
-<!-- </div>
-</div>
-</div> -->
-<!-- Sidebar finish end -->
-
-<div style="margin-top: 69px;" id="wrapper">
+<div id="wrapper">
 
         <!-- Sidebar -->
         <% include partials/side %>
@@ -39,20 +21,23 @@
             </div>
             <form action="/create" method="POST">
                 <div class="form-group">
-                      <label class="display-4">Contest name</label>
-                      <input type="text" class="form-control" placeholder="Enter test name" name="testname">
+                      <label class="display-4 raleway">Test name</label>
+                      <input type="text" class="form-control raleway" placeholder="Enter test name" required name="testname">
                 </div>
-                <label class="display-4">Total time :</label>
+                <label class="display-4 raleway">Total time :</label>
                 <div class="row">
                     
                 <div class="form-group col">
-                        <input type="number" class="form-control" placeholder="Enter hour" name="hour">
+                        <input type="number" class="form-control raleway" placeholder="Hours" name="hour" required>
                   </div>
                   <div class="form-group col">
-                        <input type="number" class="form-control" placeholder="Enter minutes" name="min">
+                        <input type="number" class="form-control raleway" placeholder="Minutes" name="min" required>
                   </div>
                 </div>
+                <div class="row container questions">
                 <button type="submit" class="btn btn-primary">Start Adding Questions</button>
+                <a href="/home"><button type="button" class="btn btn-danger back">Go Back</button></a>
+              </div>
             </form>
              
               </div>

@@ -361,13 +361,15 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
 /* Card */
 
 .card {
+  padding: 0;
   display: flex;                /* Children use Flexbox */
   flex-direction: column;       /* Rotate Axis */
   border: 1px solid #EF9A9A;    /* Set up Border */
   border-radius: 4px;           /* Slightly Curve edges */
   overflow: hidden;             /* Fixes the corners */
   margin: 5px;                  /* Add space between cards */
-  box-shadow: 4px 4px 10px rgb(243, 200, 200);
+  box-shadow: 3px 3px 6px rgba(211, 47, 47, 0.432);
+  max-width: 32%;
 }
 
 .card-header {
@@ -378,6 +380,18 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   border-bottom: 1px solid #EF9A9A;
   background-color: #FFEBEE;
   padding: 5px 10px;
+}
+
+.card-button{
+  background-color: #D32F2F;
+  border-color: #D32F2F; 
+  color: white;
+}
+
+.card-button:hover{
+  background-color: rgb(192, 11, 11);
+  border-color: rgb(201, 10, 10); 
+  /* color: #FF5E00; */
 }
 
 .card-main {
@@ -392,15 +406,12 @@ body.fixed-nav.sidebar-toggled #content-wrapper {
   font-size: 26px;
 }
 
-.btn-danger {
-  
-  margin-bottom: 10px;
-}
 
 .main-description {
   color: #D32F2F;
   font-size: 15px;
   text-align: center;
+  padding-top: 10px;
 }
 
 
