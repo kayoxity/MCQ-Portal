@@ -23,24 +23,24 @@
         <form action="/create/num" method="POST">
           <div class="form-group">
                 <label class="display-4 raleway">Question <%=qnumber%> </label>
-                <input type="text" class="form-control raleway" placeholder="Enter question" name="question">
+                <input type="text" class="form-control raleway" placeholder="Enter question" required name="question">
           </div>
           <input class="invisible" name="qnumber" value=<%=(parseInt(qnumber, 10)+1).toString()%> type="text">
           <div class="row">
                   <div class="col">
-                    <input type="text" class="form-control raleway" placeholder="Option 1" name="op1">
+                    <input type="text" class="form-control raleway" placeholder="Option 1" required name="op1">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control raleway" placeholder="Option 2" name="op2">
+                    <input type="text" class="form-control raleway" placeholder="Option 2" required name="op2">
                   </div>
           </div>
           <br>
           <div class="row">
                   <div class="col">
-                    <input type="text" class="form-control raleway" placeholder="Option 3" name="op3">
+                    <input type="text" class="form-control raleway" placeholder="Option 3" required name="op3">
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control raleway" placeholder="Option 4" name="op4">
+                    <input type="text" class="form-control raleway" placeholder="Option 4" required name="op4">
                   </div>
           </div>
           <br>
