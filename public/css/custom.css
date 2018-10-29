@@ -143,3 +143,12 @@ header.masthead .intro-text .intro-lead-in {
 .add , .finish{
     width: 100px;
 }
+
+.bold{
+    font-weight: bold;
+}
+
+.bg-verydark{
+    background: rgb(0, 0, 17);
+    color: white;
+}

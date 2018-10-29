@@ -17,7 +17,7 @@
 - Take Test
 - Once submitted, that test won't show in his/her profile
 - Separate setter and taker
-- Added UI
+- Added UI (Profile UI remains)
 - Reset response to question
 - Confirm password
 - Added timer

@@ -9,6 +9,7 @@ var testSchema = new mongoose.Schema({
 
 
 var UserSchema = new mongoose.Schema({
+    realname : String,
     username : String,
     password : String,
     tests : [testSchema],

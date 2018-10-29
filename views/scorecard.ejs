@@ -34,18 +34,18 @@
         <div id="content-wrapper">
           <div style="padding-left:50px;padding-right: 50px;" class="container">
             <div class="row">
-              <h1 id="name">Welcome <%=name.charAt(0).toUpperCase() + name.slice(1)%></h1>
+              <h1 id="name">Welcome <%=realname%></h1>
             </div>
     
   
             <br>
-            
+            <form onsubmit="loadDoc();return false;">
                     <div class="form-group">
                       <input type="text" class="form-control raleway" id="search" required placeholder="Enter test name">
                       <small class="form-text text-muted raleway">Enter the name of the test whose score you want to view.</small>
                     </div>
                     <button type="button" class="btn btn-primary" onclick="loadDoc()"">OK</button>
-                
+                </form>
                 <br><br>
                 <div id="demo1">
                     <span class="raleway" id="demo2"></span> <span id="demo3"></span>
@@ -79,6 +79,7 @@
           let a = "scorecard/a?test="+document.getElementById('search').value;
           xhttp.open("GET",a, true);
           xhttp.send();
+          
         }
 </script>
 

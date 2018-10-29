@@ -4,45 +4,7 @@
 <body>
 
 <% include partials/navbar %>
-<!-- <% include partials/sidebar %> -->
 
-<!-- <div class="container-fluid row">
-    <div class="card col-4">
-        <div class="card-header">Night</div>
-        <div class="card-main">
-          <a href="/create"><button class="btn btn-danger">Create Test</button></a>
-          <div class="main-description">Hot Tub</div>
-        </div>
-    </div>
-
-    <% for (var i = 0; i < tests.length; i++) {%>
-    <% if(testSchema.indexOf(tests[i].name) != -1) { continue; } %>
-    <div class="card col-4">
-      <div class="card-header"><%= tests[i].name %></div>
-      <div class="card-main">
-        <a href="<%= '/test/'+ i.toString() %>"><button class="btn btn-danger">Start Test</button></a>
-        <div class="main-description">Hot Tub</div>
-      </div>
-    </div>
-    <% } %>
-
-    <div class="card col-4">
-      <div class="card-header">Night</div>
-      <div class="card-main">
-        <a href="/create"><button class="btn btn-white">Disabled</button></a>
-        <div class="main-description">Hot Tub</div>
-      </div>
-    </div>
-    
-    
-</div>
- -->
-
-<!-- Sidebar finish start -->
-<!-- </div>
-</div>
-</div> -->
-<!-- Sidebar finish end -->
 
 
 <div id="wrapper">
@@ -55,7 +17,7 @@
     <div id="content-wrapper">
       <div style="padding-left:50px;padding-right: 50px;" class="container">
         <div class="row">
-          <h1 id="name">Welcome <%=name%></h1>
+          <h1 id="name">Welcome <%=realname%></h1>
         </div>
         <br>
         <div class="row text-center">

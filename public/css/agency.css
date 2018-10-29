@@ -74,15 +74,6 @@ section h3.section-subheading {
 
 
 
-::-moz-selection {
-  background: #fed136;
-  text-shadow: none;
-}
-
-::selection {
-  background: #fed136;
-  text-shadow: none;
-}
 
 img::-moz-selection {
   background: transparent;

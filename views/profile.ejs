@@ -34,19 +34,23 @@
         <div id="content-wrapper">
           <div style="padding-left:50px;padding-right: 50px;" class="container">
             <div class="row">
-              <h1 id="name">Welcome <%=name.charAt(0).toUpperCase() + name.slice(1)%></h1>
+              <h1 id="name">Welcome <%=realname%></h1>
             </div>
     
   
        
                     <br>
                     <div class="row">
-                        <div class="col-sm">Username : <%=name%></div>
-                        <div class="col-sm">Roll : <%=roll%></div>
+                        <div class="col-sm raleway"><span class="bold">Username : </span> <%=name%></div>
+                        <div class="col-sm raleway"><span class="bold">Name : </span><%=realname%></div>
                     </div>
                     <div class="row">
-                        <div class="col-sm">Email : <%=email%></div>
-                        <div class="col-sm">College : <%=college%></div>
+                      <div class="col-sm raleway"><span class="bold">Roll :</span> <%=roll%></div>
+                      <div class="col-sm raleway"><span class="bold">Email : </span><%=email%></div>
+                  </div>
+                    <div class="row">
+                        <div class="col-sm raleway"><span class="bold">Gender : </span><%=gender%></div>
+                        <div class="col-sm raleway"><span class="bold">College : </span><%=college%></div>
                     </div>
   
             

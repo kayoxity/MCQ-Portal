@@ -122,6 +122,7 @@ app.post('/register',samePassword, (req,res) => {
     req.body.username;
     req.body.password;
     User.register(new User({
+        realname : req.body.realname,
         username : req.body.username,
         type : req.body.type,
         gender : req.body.gender,
@@ -171,7 +172,7 @@ function(req,res,next) {
         y.push(testSchema[i].testname)
     }
     // console.log(y);
-    res.render('home',{name:req.user.username,tests : testss,testSchema : y,type : req.user.type,loggedIn : loggedIn});
+    res.render('home',{realname:req.user.realname,tests : testss,testSchema : y,type : req.user.type,loggedIn : loggedIn});
 });
 
 
@@ -179,10 +180,12 @@ function(req,res,next) {
 app.get('/profile',logout,isLoggedIn,(req,res) => {
     // console.log(req.user);
     res.render('profile',{
+        realname : req.user.realname,
         name : req.user.username,
         email : req.user.email,
         college : req.user.college,
         roll : req.user.roll,
+        gender : req.user.gender,
         loggedIn : loggedIn
     });
     
@@ -191,7 +194,7 @@ app.get('/profile',logout,isLoggedIn,(req,res) => {
 //Edit profile route
 app.get('/editprofile',logout,isLoggedIn,(req,res) => {
     res.render('editprofile',{
-        name : req.user.username,
+        realname : req.user.realname,
         email : req.user.email,
         college : req.user.college,
         roll : req.user.roll,
@@ -204,7 +207,7 @@ app.post('/editprofile',isLoggedIn,(req,res) => {
     // console.log(req);
     User.updateOne({
         username:req.user.username},{
-            username : req.body.username,
+            realname : req.body.realname,
             email : req.body.email,
             college : req.body.college,
             roll : req.body.roll,
@@ -226,7 +229,7 @@ app.post('/editprofile',isLoggedIn,(req,res) => {
 //Create-test route
 
 app.get('/create',logout,isLoggedIn,(req,res) => {
-    res.render('create',{name:req.user.username,loggedIn : loggedIn});
+    res.render('create',{loggedIn : loggedIn});
 });
 
 app.post('/create',isLoggedIn,(req,res) => {
@@ -258,7 +261,7 @@ app.post('/create',isLoggedIn,(req,res) => {
 //Add questions route
 
 app.get('/create/:num',logout,isLoggedIn,(req,res) => {
-    res.render('createQ',{qnumber : req.params.num,name:req.user.username,loggedIn : loggedIn});
+    res.render('createQ',{qnumber : req.params.num,loggedIn : loggedIn});
 });
 
 app.post('/create/num',isLoggedIn, (req,res) => {
@@ -298,7 +301,7 @@ app.get('/test/:num',logout,function(req,res,next) {
     isLoggedIn, (req,res) => {
         var num = req.params.num;
         current = testss[num];
-        res.render('test',{name:req.user.username,test:testss[num],loggedIn : loggedIn});
+        res.render('test',{test:testss[num],loggedIn : loggedIn});
 });
 
 app.post('/test/num',isLoggedIn,(req,res) => {
@@ -319,7 +322,7 @@ app.post('/test/num',isLoggedIn,(req,res) => {
 
 //Scorecard route
 app.get('/scorecard',logout,isLoggedIn,(req,res) => {
-    res.render('scorecard',{name:req.user.username,loggedIn : loggedIn});
+    res.render('scorecard',{realname:req.user.realname,loggedIn : loggedIn});
 });
 
 

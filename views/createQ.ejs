@@ -46,12 +46,19 @@
           <br>
           <div class="form-group">
             <label class="raleway" style="font-size:30px;">Correct Option</label>
-            <input type="text" class="form-control raleway" placeholder="Enter question" name="ans">
+            <div class="wrap-input100 validate-input">
+              <select class="form-control input100 form-control-sm raleway" name="ans">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+              </select>
+          </div>
       </div>
       <div class="row questions center-button">
           <button type="submit" class="btn btn-primary add">Add</button>
           <button type="submit" class="btn btn-primary" style="visibility:hidden;width:30px;">Add</button>
-          <a href="/home"><button class="btn btn-primary finish" type="button">Finish</button></a>
+          <a href="/home"><button class="btn btn-danger finish" type="button">Finish</button></a>
         </div>
       </form> 
 
