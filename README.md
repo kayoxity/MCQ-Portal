@@ -11,17 +11,17 @@
 - Sign Up/Log in/Log Out
 - User Authentication
 - View Profile
-- Edit Profile (Edit password not yet added) (Also another small problem of displaying sentence in the input form)
+- Edit Profile 
 - View Scorecard
 - Create Test
 - Take Test
 - Once submitted, that test won't show in his/her profile
 - Separate setter and taker
-- Added UI (Profile UI remains)
+- Added UI
 - Reset response to question
 - Confirm password
 - Added timer
 ### Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
 - Edit questions/delete questions (2)
-- Edit password (3)
-- Rankcard (2)
+- Edit password (2)
+- Rankcard (3)
