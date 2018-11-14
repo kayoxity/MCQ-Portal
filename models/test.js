@@ -14,7 +14,8 @@ var questionSchema = new mongoose.Schema({
 var testSchema = new mongoose.Schema({
     name : String,
     questions : [questionSchema],
-    time : Number
+    time : Number,
+    current : Number
 });
 
 var Test = mongoose.model("Test",testSchema);

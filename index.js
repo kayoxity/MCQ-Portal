@@ -71,6 +71,10 @@ var current = new Test({
 
 var testss = [];
 
+var userarray = [];
+var testarray = [];
+var scorearray = [];
+
 
 
 
@@ -243,9 +247,11 @@ app.post('/create',isLoggedIn,(req,res) => {
     if(req.body.min && a == true){
         t = t + parseInt(req.body.min,10)
     }
+    t = t*60000;
     var newTest = new Test({
         name : req.body.testname,
-        time : t
+        time : t,
+        current : t
     });
     newTest.save((err,test) => {
         if(err){
@@ -301,7 +307,7 @@ app.get('/test/:num',logout,function(req,res,next) {
     isLoggedIn, (req,res) => {
         var num = req.params.num;
         current = testss[num];
-        res.render('test',{test:testss[num],loggedIn : loggedIn});
+        res.render('test',{test:testss[num],loggedIn : loggedIn,type : req.user.type});
 });
 
 app.post('/test/num',isLoggedIn,(req,res) => {
@@ -317,7 +323,36 @@ app.post('/test/num',isLoggedIn,(req,res) => {
                 }
             }
         );
+        Test.update({name:req.body.testname},
+            {current : req.body.time},
+            (err,test) => {
+                if(err){
+                    console.log(err);
+                }
+                else
+                {
+
+                }
+            });
         res.redirect('/home');
+});
+
+//update timer
+app.get('/timer',isLoggedIn,(req,res) => {
+    var time = req.query.time;
+    var name = req.query.namee;
+    // console.log(name);
+    Test.update({name:name},
+        { current : time },
+        (err,test) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            //  console.log(test);
+            res.send(time.toString());
+        }
+    })
 });
 
 //Scorecard route
@@ -335,6 +370,7 @@ app.get('/scorecard/a',logout,(req,res) => {
             console.log(err);
         }
         else{
+            // console.log(user);
             for(let i = 0;i < user[0].tests.length;i++){
                 if(user[0].tests[i].testname == tester){
                     score = user[0].tests[i].score;
@@ -343,6 +379,53 @@ app.get('/scorecard/a',logout,(req,res) => {
             res.send(score.toString());
         }
     });
+});
+
+//Setter scorecard
+app.get('/scorecards',logout,isLoggedIn,function(req,res,next) {
+    Test.find((err,test) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            testss = test;
+        }
+        next();
+    });
+},
+(req,res) => {
+    res.render('scorecards',{realname:req.user.realname,loggedIn : loggedIn,tests:testss});
+});
+
+app.get('/scorecards/:num',logout,isLoggedIn,function(req,res,next) {
+    User.find({type:"student"},(err,user) => {
+        if(err){
+            console.log(err);
+        }
+        else{
+            var i;
+            for(i = 0;i < user.length;i++)
+            {
+                let test = user[i].tests;
+                for(var j = 0;j< test.length;j++)
+                {
+                    if(test[j].testname == req.params.num)
+                    {
+                        userarray.push(user[i].realname);
+                        scorearray.push(test[j].score);
+                    }
+                }
+            }
+            // console.log(userarray);
+            // console.log(scorearray);
+        }
+        next();
+    });
+},(req,res) => {
+    console.log(userarray);
+    res.render('testscorecards',{realname:req.user.realname,loggedIn : loggedIn,tests:testss,userarray:userarray,scorearray:scorearray});
+    userarray = [];
+    scorearray = [];
 });
 
 app.listen('3000', () => console.log('Listening on port 3000'));

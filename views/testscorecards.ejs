@@ -1,0 +1,63 @@
+<% include partials/header %>
+<link rel="stylesheet" href="/css/sidebar.css">
+<link rel="stylesheet" href="/css/home.css">
+<body>
+
+<% include partials/navbar %>
+
+
+
+<div id="wrapper">
+
+        <!-- Sidebar -->
+        <ul class="sidebar navbarr-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="/profile">
+                <i class="fas fa-fw fa-user-circle"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/editprofile">
+                <i class="fas fa-fw fa-user-edit"></i>
+                <span>Edit Profile</span></a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="/scorecards">
+                <i class="fas fa-fw fa-table"></i>
+                <span>View Scorecard</span></a>
+            </li>
+          </ul>
+    
+        <!-- Side navbar finished -->
+    
+        <div id="content-wrapper">
+          <div style="padding-left:50px;padding-right: 50px;" class="container">
+            <div class="row">
+              <h1 id="name">Welcome <%=realname%></h1>
+            </div>
+    
+  
+            <br>
+            <div class="text-center">
+                    <div class="row">
+                            <div class="raleway bold col-6">Name</div>
+                            <div class="raleway bold col-6">Score</div>
+                        </div>
+                    <hr>
+            <% for (var i = 0; i < scorearray.length; i++) {%>
+                <div class="row">
+                    <div class="raleway col-6"><%= userarray[i] %></div>
+                    <div class="raleway col-6"><%= scorearray[i] %></div>
+                </div>
+            <% } %>
+        </div>
+             
+              </div>
+              
+          </div>
+          
+      </div>
+    </div>
+
+<% include partials/footer %>

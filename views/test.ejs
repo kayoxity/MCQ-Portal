@@ -28,6 +28,8 @@
         <br><br>
 <% var time = JSON.stringify(test.time) %>
 <% var siz = JSON.stringify(test.questions.length) %>
+<% var currtime = JSON.stringify(test.current) %>
+<% var namrrr = ""+test.name+"" %>
 
 
 
@@ -77,6 +79,8 @@
 <br>
 <form class="text-center" action="/test/num" method="POST" id="form1">
     <input name="score" type="text" style="display : none" value=0 id="score">
+    <input name="testname" type="text" style="display : none" value=<%=namrrr%> id="score">
+    <input name="time" type="text" style="display : none" value=<%=time%> id="score">
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>
 
@@ -88,18 +92,10 @@
 </div>
 
 <script>
-    window.onbeforeunload = function (e) {
-    e = e || window.event;
-
-    // For IE and Firefox prior to version 4
-    if (e) {
-        e.returnValue = 'Sure?';
-    }
-
-    // For Safari
-    return 'Sure?';
-};
+    
     var score = 0;
+    var namee = "<%=namrrr%>";
+    //console.log(namee+"a");
     var size = <%=siz%>;
     var answeredCorrect = [];
     for(var i = 0;i < size;i++)
@@ -155,7 +151,14 @@
     //timer
     
         // console.log(<%= time %>);
-    var distance = <%= time %>*1000*60;
+    var distance = <%= time %>;
+    var t = "<%=currtime%>";
+    console.log(t);
+    if(t != distance)
+    {
+        distance = t;
+    }
+    
     
     // Update the count down every 1 second
     var x = setInterval(function() {
@@ -172,6 +175,30 @@
     // Display the result in the element with id="demo"
     document.getElementById("time").innerHTML =  hours + "h "
     + minutes + "m " + seconds + "s ";
+
+    //AJAX request
+
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    console.log(this.responseText);
+        if(this.responseText == "-1"){
+            document.getElementById("demo1").innerHTML = '<span id="demo2">Test does not exist</span> <span id="demo3"></span>';
+            }
+            else{
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+                document.getElementById("time").innerHTML =  hours + "h "
+    + minutes + "m " + seconds + "s ";
+                }
+            }
+          };
+        //   console.log("scorecard/a?data="+document.getElementById('search').value);
+          let a = "/timer?time="+(distance)+"&namee="+namee;
+          xhttp.open("GET",a, true);
+          console.log(a);
+          xhttp.send();
 
     // If the count down is finished, write some text
     if (distance < 0) {

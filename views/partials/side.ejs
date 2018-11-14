@@ -11,8 +11,15 @@
             <span>Edit Profile</span></a>
         </li>
         <li class="nav-item">
+          <% if(type == "student") { %>
           <a class="nav-link" href="/scorecard">
             <i class="fas fa-fw fa-table"></i>
             <span>View Scorecard</span></a>
+          <% } %>
+          <% if(type == "setter") { %>
+            <a class="nav-link" href="/scorecards">
+              <i class="fas fa-fw fa-table"></i>
+              <span>View Scorecard</span></a>
+            <% } %>
         </li>
       </ul>
