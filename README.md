@@ -21,7 +21,4 @@
 - Reset response to question
 - Confirm password
 - Added timer
-### Features to add (3 : difficult,2 : could be tough/take time,1 : minor code changes)
-- Edit questions/delete questions (2)
-- Edit password (2)
-- Rankcard (3)
+- Setter scorecard
