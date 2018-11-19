@@ -15,7 +15,9 @@ var testSchema = new mongoose.Schema({
     name : String,
     questions : [questionSchema],
     time : Number,
-    current : Number
+    current : Number,
+    correct : Number,
+    wrong : Number
 });
 
 var Test = mongoose.model("Test",testSchema);

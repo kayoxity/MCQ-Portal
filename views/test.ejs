@@ -26,6 +26,8 @@
         
         
         <br><br>
+<% var cor = JSON.stringify(test.correct) %>
+<% var w = JSON.stringify(test.wrong) %>
 <% var time = JSON.stringify(test.time) %>
 <% var siz = JSON.stringify(test.questions.length) %>
 <% var currtime = JSON.stringify(test.current) %>
@@ -92,8 +94,11 @@
 </div>
 
 <script>
-    
+    var correct = <%= cor%>;
+    var wrong = <%=w%>;
     var score = 0;
+    correct = parseInt(correct, 10);
+    wrong = parseInt(wrong, 10);
     var namee = "<%=namrrr%>";
     //console.log(namee+"a");
     var size = <%=siz%>;
@@ -112,7 +117,7 @@
         // console.log(answeredCorrect[i] + "+" + score);
         if(answeredCorrect[i] == true){
             answeredCorrect[i] = false;
-            score--;
+            score = score - wrong;
         }
     }
 
@@ -136,12 +141,12 @@
         }
         if(selected == parseInt(ans, 10) && answeredCorrect[i] == false)
         {
-            score++;
+            score = score + correct;
             answeredCorrect[i] = true;
         }
         else if(selected != parseInt(ans, 10) && answeredCorrect[i] == true)
         {
-            score--;
+            score = score - wrong;
             answeredCorrect[i] = false;
         }
         //console.log(score);

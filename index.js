@@ -233,7 +233,7 @@ app.post('/editprofile',isLoggedIn,(req,res) => {
 //Create-test route
 
 app.get('/create',logout,isLoggedIn,(req,res) => {
-    res.render('create',{loggedIn : loggedIn});
+    res.render('create',{loggedIn : loggedIn,type : req.user.type});
 });
 
 app.post('/create',isLoggedIn,(req,res) => {
@@ -251,7 +251,9 @@ app.post('/create',isLoggedIn,(req,res) => {
     var newTest = new Test({
         name : req.body.testname,
         time : t,
-        current : t
+        current : t,
+        correct : req.body.correct,
+        wrong : req.body.wrong
     });
     newTest.save((err,test) => {
         if(err){
@@ -267,7 +269,7 @@ app.post('/create',isLoggedIn,(req,res) => {
 //Add questions route
 
 app.get('/create/:num',logout,isLoggedIn,(req,res) => {
-    res.render('createQ',{qnumber : req.params.num,loggedIn : loggedIn});
+    res.render('createQ',{qnumber : req.params.num,loggedIn : loggedIn,type : req.user.type});
 });
 
 app.post('/create/num',isLoggedIn, (req,res) => {
@@ -394,7 +396,7 @@ app.get('/scorecards',logout,isLoggedIn,function(req,res,next) {
     });
 },
 (req,res) => {
-    res.render('scorecards',{realname:req.user.realname,loggedIn : loggedIn,tests:testss});
+    res.render('scorecards',{realname:req.user.realname,loggedIn : loggedIn,tests:testss,type : req.user.type});
 });
 
 app.get('/scorecards/:num',logout,isLoggedIn,function(req,res,next) {
